@@ -12,6 +12,7 @@ var quizQArr = [
 ];
 var startQuiz = function () {
     console.log("Quiz Started..");
+    showQuiz();
     timer = setInterval(function(){ 
         time--;
         timer_el.textContent = time;
@@ -20,6 +21,29 @@ var startQuiz = function () {
             quizEnd();
         }
     }, 1000);
+}
+
+var showQuiz = function () {
+    var quizWrapper = document.getElementById("quiz-wrapper");
+    startBtn.classList.add("hidden");
+    quizWrapper.innerHTML = "";
+    var question_el = document.createElement("h3");
+    question_el.textContent = quizQArr[index].question;
+    quizWrapper.appendChild(question_el);
+    quizQArr[index].answers.forEach(answer => {
+        var answer_el = document.createElement("button");
+        answer_el.textContent = answer;
+        answer_el.addEventListener("click", checkAnswer)
+        quizWrapper.appendChild(answer_el);
+    });
+}
+
+var checkAnswer = function (event) {
+    var choice = event.target.textContent;
+    var correct = quizQArr[index].solved;
+    // if choice doesn't equal correct time - 15s
+    index++;
+    showQuiz();
 }
 
 startBtn.addEventListener("click",startQuiz);
