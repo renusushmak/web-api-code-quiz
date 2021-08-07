@@ -42,8 +42,43 @@ var checkAnswer = function (event) {
     var choice = event.target.textContent;
     var correct = quizQArr[index].solved;
     // if choice doesn't equal correct time - 15s
+    if(choice != correct) {
+        time = time - 10;
+        timer_el.textContent = time; 
+    }
     index++;
-    showQuiz();
+    if (index >= quizQArr.length) {
+        quizEnd();
+    } else{
+        showQuiz();
+    }
 }
+
+var quizEnd = function (event) {
+    clearInterval(timer)
+    var quizWrapper = document.getElementById("quiz-wrapper");
+    quizWrapper.innerHTML = "";
+    var gameOver = document.createElement("h3");
+    gameOver.textContent = "Game Over";
+    var submit_btn = document.createElement("button");
+    submit_btn.textContent = "Submit";
+    submit_btn.addEventListener("click", submitScore)
+    var inputs = document.createElement("input");
+    quizWrapper.appendChild(gameOver);
+    quizWrapper.appendChild(inputs);
+    quizWrapper.appendChild(submit_btn);
+}
+
+var submitScore = function (event) {
+    var initials = event.target.previousElementSibling.value;
+    localStorage.setItem("score", initials + ": " + time);
+    var quizWrapper = document.getElementById("quiz-wrapper");
+    quizWrapper.innerHTML = "";
+    startBtn.classList.remove("hidden");
+    time = 60;
+    timer_el.textContent = time;
+    index = 0;
+}
+    
 
 startBtn.addEventListener("click",startQuiz);
