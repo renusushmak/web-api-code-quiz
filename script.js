@@ -4,10 +4,10 @@ var index = 0;
 var time = 60;
 var timer;
 var quizQArr = [
-    { question: "questionexample", answers: [ 1,2,3,4], solved: 2 },
-    { question: "questionexample2", answers: [ 1,2,3,4], solved: 2 },
-    { question: "questionexample3", answers: [ 1,2,3,4], solved: 2 },
-    { question: "questionexample4", answers: [ 1,2,3,4], solved: 2 }
+    { question: "Commonly included datatypes do not include", answers: [ 'Strings','Booleans','Alerts','Numbers'], solved: 3 },
+    { question: "The condition statement if/else is enclosed with the following:", answers: [ 'Parantheses', 'CurlyBrackets', 'Quotes', 'SquareBrackets'], solved: 1 },
+    { question: "Arrays can be used to store following", answers: [ 'NumberOfStrings','OtherArrays','Booleans','AlloftheAbove'], solved: 4 },
+    { question: "How to create an array in js", answers: [ 'var Arr[]=','var Arr=[]','var Arr{}=','var Arr={}'], solved: 2 }
     
 ];
 var startQuiz = function () {
@@ -40,11 +40,14 @@ var showQuiz = function () {
 
 var checkAnswer = function (event) {
     var choice = event.target.textContent;
-    var correct = quizQArr[index].solved;
+    var correct = quizQArr[index].answers[quizQArr[index].solved-1];
     // if choice doesn't equal correct time - 15s
     if(choice != correct) {
         time = time - 10;
         timer_el.textContent = time; 
+        document.getElementById('response').textContent='Incorrect';
+    } else {
+        document.getElementById('response').textContent='Correct!';
     }
     index++;
     if (index >= quizQArr.length) {
