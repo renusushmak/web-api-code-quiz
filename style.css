@@ -2,3 +2,14 @@
     display: none;
 }
 
+.wrapper {
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    background: rgb(71, 8, 100);
+    color: #fff;
+    margin: 13px 13px 3px 10px;
+    border-radius: 10px;
+ }

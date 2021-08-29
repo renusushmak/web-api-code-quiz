@@ -47,7 +47,9 @@ var checkAnswer = function (event) {
         timer_el.textContent = time; 
         document.getElementById('response').textContent='Incorrect';
     } else {
+        if (index <= quizQArr.length) {
         document.getElementById('response').textContent='Correct!';
+        }
     }
     index++;
     if (index >= quizQArr.length) {
