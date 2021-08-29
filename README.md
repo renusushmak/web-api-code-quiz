@@ -11,6 +11,8 @@ Once quiz ends the player can enter their initials and view their highscore.
 Home screen has a link to view High Scores
 ```
 
+<img width="527" alt="Screen Shot 2021-08-29 at 7 10 40 AM" src="https://user-images.githubusercontent.com/44761233/131253430-31e2385b-9be7-4a9d-8814-35794d06e802.png">
+
 Deployed link
 ```
 https://renusushmak.github.io/web-api-code-quiz/ 
